@@ -35,11 +35,11 @@ EOT
     name                          = string
     resource_group_name           = string
     sku                           = string
-    capacity                      = optional(number, 0)
-    local_auth_enabled            = optional(bool, true)
-    minimum_tls_version           = optional(string, "1.2")
-    premium_messaging_partitions  = optional(number, 0)
-    public_network_access_enabled = optional(bool, true)
+    capacity                      = optional(number) # Default: 0
+    local_auth_enabled            = optional(bool)   # Default: true
+    minimum_tls_version           = optional(string) # Default: "1.2"
+    premium_messaging_partitions  = optional(number) # Default: 0
+    public_network_access_enabled = optional(bool)   # Default: true
     tags                          = optional(map(string))
     customer_managed_key = optional(object({
       identity_id                       = string
@@ -51,14 +51,14 @@ EOT
       type         = string
     }))
     network_rule_set = optional(object({
-      default_action = optional(string, "Allow")
+      default_action = optional(string) # Default: "Allow"
       ip_rules       = optional(set(string))
       network_rules = optional(object({
-        ignore_missing_vnet_service_endpoint = optional(bool, false)
+        ignore_missing_vnet_service_endpoint = optional(bool) # Default: false
         subnet_id                            = string
       }))
-      public_network_access_enabled = optional(bool, true)
-      trusted_services_allowed      = optional(bool, false)
+      public_network_access_enabled = optional(bool) # Default: true
+      trusted_services_allowed      = optional(bool) # Default: false
     }))
   }))
 }
