@@ -1,3 +1,7 @@
+output "servicebus_namespaces_id" {
+  description = "Map of id values across all servicebus_namespaces, keyed the same as var.servicebus_namespaces"
+  value       = { for k, v in azurerm_servicebus_namespace.servicebus_namespaces : k => v.id }
+}
 output "servicebus_namespaces_capacity" {
   description = "Map of capacity values across all servicebus_namespaces, keyed the same as var.servicebus_namespaces"
   value       = { for k, v in azurerm_servicebus_namespace.servicebus_namespaces : k => v.capacity }
