@@ -53,10 +53,10 @@ EOT
     network_rule_set = optional(object({
       default_action = optional(string) # Default: "Allow"
       ip_rules       = optional(set(string))
-      network_rules = optional(object({
+      network_rules = optional(list(object({
         ignore_missing_vnet_service_endpoint = optional(bool) # Default: false
         subnet_id                            = string
-      }))
+      })))
       public_network_access_enabled = optional(bool) # Default: true
       trusted_services_allowed      = optional(bool) # Default: false
     }))

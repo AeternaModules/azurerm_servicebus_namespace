@@ -35,7 +35,7 @@ resource "azurerm_servicebus_namespace" "servicebus_namespaces" {
       default_action = network_rule_set.value.default_action
       ip_rules       = network_rule_set.value.ip_rules
       dynamic "network_rules" {
-        for_each = network_rule_set.value.network_rules != null ? [network_rule_set.value.network_rules] : []
+        for_each = network_rule_set.value.network_rules != null ? network_rule_set.value.network_rules : []
         content {
           ignore_missing_vnet_service_endpoint = network_rules.value.ignore_missing_vnet_service_endpoint
           subnet_id                            = network_rules.value.subnet_id
