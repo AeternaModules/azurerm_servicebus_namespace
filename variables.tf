@@ -35,11 +35,11 @@ EOT
     name                          = string
     resource_group_name           = string
     sku                           = string
-    capacity                      = optional(number) # Default: 0
-    local_auth_enabled            = optional(bool)   # Default: true
-    minimum_tls_version           = optional(string) # Default: "1.2"
-    premium_messaging_partitions  = optional(number) # Default: 0
-    public_network_access_enabled = optional(bool)   # Default: true
+    capacity                      = optional(number)
+    local_auth_enabled            = optional(bool)
+    minimum_tls_version           = optional(string)
+    premium_messaging_partitions  = optional(number)
+    public_network_access_enabled = optional(bool)
     tags                          = optional(map(string))
     customer_managed_key = optional(object({
       identity_id                       = string
@@ -51,14 +51,14 @@ EOT
       type         = string
     }))
     network_rule_set = optional(object({
-      default_action = optional(string) # Default: "Allow"
+      default_action = optional(string)
       ip_rules       = optional(set(string))
       network_rules = optional(list(object({
-        ignore_missing_vnet_service_endpoint = optional(bool) # Default: false
+        ignore_missing_vnet_service_endpoint = optional(bool)
         subnet_id                            = string
       })))
-      public_network_access_enabled = optional(bool) # Default: true
-      trusted_services_allowed      = optional(bool) # Default: false
+      public_network_access_enabled = optional(bool)
+      trusted_services_allowed      = optional(bool)
     }))
   }))
   # --- Unconfirmed validation candidates, derived from azurerm_servicebus_namespace's provider source ---
